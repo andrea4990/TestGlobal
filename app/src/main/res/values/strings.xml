@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TestGlobal</string>
+    <string name="base_url">http://private-f0eea-mobilegllatam.apiary-mock.com</string>
+</resources>
