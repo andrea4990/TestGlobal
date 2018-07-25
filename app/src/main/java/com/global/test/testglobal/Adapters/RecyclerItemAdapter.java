@@ -57,8 +57,16 @@ public class RecyclerItemAdapter extends RecyclerView.Adapter<RecyclerItemHolder
 
     @Override
     public void onBindViewHolder(final RecyclerItemHolders holder, final int position) {
-        holder.title.setText(itemList.get(position).getTitle());
-        holder.descripcion.setText(itemList.get(position).getDescription());
+        if(itemList.get(position).getTitle()!=null) {
+            holder.title.setText(itemList.get(position).getTitle());
+        }else{
+            holder.title.setText("Sin información");
+        }
+        if(itemList.get(position).getDescription()!=null) {
+            holder.descripcion.setText(itemList.get(position).getDescription());
+        }else{
+            holder.descripcion.setText("Sin información");
+        }
         Transformation transformation = new Transformation() {
 
             @Override
@@ -112,8 +120,8 @@ public class RecyclerItemAdapter extends RecyclerView.Adapter<RecyclerItemHolder
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, DetailItemActivity.class);
-                i.putExtra("title",itemList.get(position).getTitle());
-                i.putExtra("descripcion",itemList.get(position).getDescription());
+                i.putExtra("title",holder.title.getText());
+                i.putExtra("descripcion",holder.descripcion.getText());
                 i.putExtra("url",itemList.get(position).getImage());
                 context.startActivity(i);
             }
